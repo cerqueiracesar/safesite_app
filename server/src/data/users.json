@@ -1,0 +1,20 @@
+[
+  {
+    "id": "user-001",
+    "name": "João Silva",
+    "role": "operario",
+    "site": "obra-001"
+  },
+  {
+    "id": "user-002",
+    "name": "Carlos Supervisor",
+    "role": "supervisor",
+    "site": "obra-001"
+  },
+  {
+    "id": "user-003",
+    "name": "Maria Mestre",
+    "role": "mestre",
+    "site": "obra-001"
+  }
+]

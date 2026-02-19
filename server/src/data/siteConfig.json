@@ -1,0 +1,22 @@
+{
+  "sites": [
+    {
+      "id": "obra-001",
+      "name": "Obra Centro",
+      "location": "Avenida Principal, Centro",
+      "manager": "Carlos Supervisor"
+    }
+  ],
+  "riskLevels": {
+    "critical": { "color": "#dc2626", "icon": "🔴", "priority": 1 },
+    "high": { "color": "#ea580c", "icon": "🟠", "priority": 2 },
+    "medium": { "color": "#eab308", "icon": "🟡", "priority": 3 },
+    "low": { "color": "#22c55e", "icon": "🟢", "priority": 4 }
+  },
+  "categories": {
+    "pessoal": "Segurança Pessoal (EPI, postura)",
+    "equipamento": "Equipamentos e Ferramentas",
+    "estrutura": "Estrutura e Obra Civil",
+    "outro": "Outro"
+  }
+}

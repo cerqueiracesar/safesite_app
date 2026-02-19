@@ -1,0 +1,299 @@
+[
+  {
+    "id": "1771457880519",
+    "siteId": "obra-001",
+    "reportedBy": "Maria Mestre",
+    "timestamp": "2026-02-18T23:38:00.519Z",
+    "description": "Alguém foi encontrado morto no hall de entrada.",
+    "aiAnalysis": {
+      "riskLevel": "critical",
+      "category": "policial",
+      "summary": "Corpo encontrado no hall de entrada - Local de possível crime/acidente fatal.",
+      "recommendedActions": [
+        "EVACUAR e ISOLAR a área imediatamente",
+        "NÃO TOCAR em nada para preservar evidências",
+        "Acionar a Polícia e a Gestão da Obra agora"
+      ],
+      "estimatedTimeToResolve": 0
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771457861670",
+    "siteId": "obra-001",
+    "reportedBy": "Maria Mestre",
+    "timestamp": "2026-02-18T23:37:41.670Z",
+    "description": "limpeza incompleta pavilhão 2",
+    "aiAnalysis": {
+      "riskLevel": "low",
+      "category": "outro",
+      "summary": "Limpeza do Pavilhão 2 incompleta.",
+      "recommendedActions": [
+        "Concluir a limpeza do Pavilhão 2",
+        "Revisar cronograma de limpeza para o local",
+        "Monitorar a aderência aos padrões de organização e limpeza"
+      ],
+      "estimatedTimeToResolve": 15
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771457201514",
+    "siteId": "obra-001",
+    "reportedBy": "Maria Mestre",
+    "timestamp": "2026-02-18T23:26:41.514Z",
+    "description": "limpeza incompleta pavilhão 2",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Erro na análise automática (Verificar manualmente)",
+      "recommendedActions": [
+        "Verificar relato original",
+        "Contactar suporte de TI"
+      ],
+      "estimatedTimeToResolve": 0
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771436080300",
+    "siteId": "obra-001",
+    "reportedBy": "Carlos Supervisor",
+    "timestamp": "2026-02-18T17:34:40.300Z",
+    "description": "Alguém foi encontrado morto no hall de entrada.",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Erro na análise automática (Verificar manualmente)",
+      "recommendedActions": [
+        "Verificar relato original",
+        "Contactar suporte de TI"
+      ],
+      "estimatedTimeToResolve": 0
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771435885786",
+    "siteId": "obra-001",
+    "reportedBy": "João Silva",
+    "timestamp": "2026-02-18T17:31:25.786Z",
+    "description": "Um corpo encontrado",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Erro na análise automática (Verificar manualmente)",
+      "recommendedActions": [
+        "Verificar relato original",
+        "Contactar suporte de TI"
+      ],
+      "estimatedTimeToResolve": 0
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771429870426",
+    "siteId": "obra-001",
+    "reportedBy": "Maria Mestre",
+    "timestamp": "2026-02-18T15:51:10.426Z",
+    "description": "colaborador baleado",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Erro na análise automática (Verificar manualmente)",
+      "recommendedActions": [
+        "Verificar relato original",
+        "Contactar suporte de TI"
+      ],
+      "estimatedTimeToResolve": 0
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771429853141",
+    "siteId": "obra-001",
+    "reportedBy": "João Silva",
+    "timestamp": "2026-02-18T15:50:53.141Z",
+    "description": "corpo encontrado no canteiro.",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Erro na análise automática (Verificar manualmente)",
+      "recommendedActions": [
+        "Verificar relato original",
+        "Contactar suporte de TI"
+      ],
+      "estimatedTimeToResolve": 0
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771429464936",
+    "siteId": "obra-001",
+    "reportedBy": "João Silva",
+    "timestamp": "2026-02-18T15:44:24.936Z",
+    "description": "corpo encontrado na cozinha, embaixo do armario.",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Erro na análise automática (Verificar manualmente)",
+      "recommendedActions": [
+        "Verificar relato original",
+        "Contactar suporte de TI"
+      ],
+      "estimatedTimeToResolve": 0
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771429444596",
+    "siteId": "obra-001",
+    "reportedBy": "João Silva",
+    "timestamp": "2026-02-18T15:44:04.596Z",
+    "description": "limpeza incompleta pavilhão 2",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Erro na análise automática (Verificar manualmente)",
+      "recommendedActions": [
+        "Verificar relato original",
+        "Contactar suporte de TI"
+      ],
+      "estimatedTimeToResolve": 0
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771429371384",
+    "siteId": "obra-001",
+    "reportedBy": "João Silva",
+    "timestamp": "2026-02-18T15:42:51.384Z",
+    "description": "Servente baleado no horário do almoço.",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Erro na análise automática (Verificar manualmente)",
+      "recommendedActions": [
+        "Verificar relato original",
+        "Contactar suporte de TI"
+      ],
+      "estimatedTimeToResolve": 0
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771426912840",
+    "siteId": "obra-001",
+    "reportedBy": "Rodrigo Engenheiro",
+    "timestamp": "2026-02-18T15:01:52.840Z",
+    "description": "limpeza incompleta pavilhão 3",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "limpeza incompleta pavilhão 3",
+      "recommendedActions": [
+        "Verificar situação com supervisor"
+      ],
+      "estimatedTimeToResolve": 30
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771426880579",
+    "siteId": "obra-001",
+    "reportedBy": "Rodrigo Engenheiro",
+    "timestamp": "2026-02-18T15:01:20.579Z",
+    "description": "Jovem baleado encontrado no refeitorio, tinha pulado o muro fugindo da polícia.",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Jovem baleado encontrado no refeitorio, tinha pulado o muro fugindo da polícia.",
+      "recommendedActions": [
+        "Verificar situação com supervisor"
+      ],
+      "estimatedTimeToResolve": 30
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771421881640",
+    "siteId": "obra-001",
+    "reportedBy": "Rodrigo Engenheiro",
+    "timestamp": "2026-02-18T13:38:01.640Z",
+    "description": "Um corpo foi encontrado enterrado, embaixo do porcelanato.",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Um corpo foi encontrado enterrado, embaixo do porcelanato.",
+      "recommendedActions": [
+        "Verificar situação com supervisor"
+      ],
+      "estimatedTimeToResolve": 30
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771421860006",
+    "siteId": "obra-001",
+    "reportedBy": "Rodrigo Engenheiro",
+    "timestamp": "2026-02-18T13:37:40.006Z",
+    "description": "Muito lixo de obra descartado irregularmente.",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "Muito lixo de obra descartado irregularmente.",
+      "recommendedActions": [
+        "Verificar situação com supervisor"
+      ],
+      "estimatedTimeToResolve": 30
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  },
+  {
+    "id": "1771421752807",
+    "siteId": "obra-001",
+    "reportedBy": "João Silva",
+    "timestamp": "2026-02-18T13:35:52.807Z",
+    "description": "O pessoal estava usando cannabis no intervalo do almoço.",
+    "aiAnalysis": {
+      "riskLevel": "medium",
+      "category": "outro",
+      "summary": "O pessoal estava usando cannabis no intervalo do almoço.",
+      "recommendedActions": [
+        "Verificar situação com supervisor"
+      ],
+      "estimatedTimeToResolve": 30
+    },
+    "status": "open",
+    "assignedTo": null,
+    "comments": []
+  }
+]
