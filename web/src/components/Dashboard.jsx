@@ -1,7 +1,6 @@
-import React from "react";
 import { RiskCard } from "./RiskCard";
 
-export function Dashboard({ reports, config, loading }) {
+export function Dashboard({ reports, config, loading, onResolve }) {
   if (!config) {
     return <div className="loading">Carregando configurações...</div>;
   }
@@ -59,7 +58,7 @@ export function Dashboard({ reports, config, loading }) {
       ) : (
         <div className="reports-container">
           {reports.map((report) => (
-            <RiskCard key={report.id} report={report} config={config} />
+            <RiskCard key={report.id} report={report} config={config} onResolve={onResolve} />
           ))}
         </div>
       )}

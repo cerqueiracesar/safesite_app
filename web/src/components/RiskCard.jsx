@@ -1,6 +1,7 @@
-import React from "react";
+import { useState } from "react"; // <-- Corrigido o React solto
 
-export function RiskCard({ report, config }) {
+// <-- Adicionamos onResolve aqui nas props
+export function RiskCard({ report, config, onResolve }) { 
   const riskInfo = config?.riskLevels?.[report.aiAnalysis.riskLevel] || {
     color: "#666",
     icon: "⚫",
@@ -50,9 +51,11 @@ export function RiskCard({ report, config }) {
 
       <div className="risk-footer">
         <small>Por: {report.reportedBy} | {new Date(report.timestamp).toLocaleTimeString("pt-BR")}</small>
+        
+        {/* <-- Usando a função onResolve que veio do pai */}
         <button
           className={`status-btn ${report.status}`}
-          onClick={() => window.riskCardCallback?.(report.id)}
+          onClick={() => onResolve(report.id)} 
         >
           {report.status === "open" ? "✓ Resolver" : "Resolvido"}
         </button>

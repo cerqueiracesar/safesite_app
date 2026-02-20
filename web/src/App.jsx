@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchReports, fetchConfig, updateReport } from "./api";
 import { ReportForm } from "./components/ReportForm";
 import { Dashboard } from "./components/Dashboard";
@@ -42,7 +42,7 @@ export default function App() {
 
     loadData(true);
     
-    const interval =setInterval(() => {
+    const interval = setInterval(() => {
         loadData(false); 
     }, 5000);
     
@@ -53,8 +53,29 @@ export default function App() {
     setReports((prev) => [newReport, ...prev]);
   }
 
+  // <-- A NOVA FUNÇÃO DE RESOLUÇÃO COM SEGURANÇA JWT
+  async function handleResolveReport(id) {
+    try {
+      // 1. Tenta atualizar no backend. Se não tiver Token, o api.js vai disparar o erro.
+      const updatedReport = await updateReport(id, {
+        status: "resolved",
+        comment: "Situação verificada e resolvida de forma segura."
+      });
+
+      // 2. Se deu certo (Token válido), atualiza a tela na mesma hora
+      setReports((prevReports) =>
+        prevReports.map((report) => (report.id === id ? updatedReport : report))
+      );
+    } catch (error) {
+      // 3. Se o Token for inválido, o alerta aparece na tela!
+      alert(error.message); 
+      console.error("Erro ao resolver relato:", error);
+    }
+  }
+
   function handleLogout() {
     localStorage.removeItem("safesite_user");
+    localStorage.removeItem("safesite_token"); // <-- Remove o token também
     setCurrentUser(null);
   }
 
@@ -83,7 +104,13 @@ export default function App() {
         </section>
 
         <section className="dashboard-section">
-          <Dashboard reports={reports} config={config} loading={loading} />
+          {/* <-- Passando a função handleResolveReport para o Dashboard */}
+          <Dashboard 
+            reports={reports} 
+            config={config} 
+            loading={loading} 
+            onResolve={handleResolveReport} 
+          />
         </section>
       </main>
 
