@@ -4,6 +4,8 @@ dotenv.config({ path: new URL("../.env", import.meta.url) });
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import swaggerUi from "swagger-ui-express";
+import { swaggerDocument } from "./swagger.js";
 import { makeGeminiClient } from "./geminiClient.js";
 import { makeRoutes } from "./routes.js";
 
@@ -20,10 +22,13 @@ app.use(cors({
 }));
 app.use(express.json({ limit: "10mb" }));
 
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 const ai = makeGeminiClient();
 
 app.use("/api", makeRoutes({ ai, modelId: MODEL_ID }));
 
 app.listen(PORT, () => {
   console.log(`[server] SafeSite running on http://localhost:${PORT} (model=${MODEL_ID})`);
+  console.log(`[server] Swagger Docs em http://localhost:${PORT}/api-docs`);
 });
