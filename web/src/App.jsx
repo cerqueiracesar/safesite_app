@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchReports, fetchConfig, updateReport } from "./api";
+import { fetchReports, fetchConfig, updateReport, deleteReport } from "./api";
 import { ReportForm } from "./components/ReportForm";
 import { Dashboard } from "./components/Dashboard";
 import { LoginModal } from "./components/LoginModal";
@@ -73,6 +73,19 @@ export default function App() {
     }
   }
 
+  // NOVA FUNÇÃO: Excluir com segurança
+  async function handleDeleteReport(id) {
+    if (!window.confirm("Atenção: Tem certeza que deseja apagar este relato permanentemente?")) return;
+    
+    try {
+      await deleteReport(id);
+      // Remove da tela na hora
+      setReports((prev) => prev.filter(r => r.id !== id));
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
   function handleLogout() {
     localStorage.removeItem("safesite_user");
     localStorage.removeItem("safesite_token"); // <-- Remove o token também
@@ -109,7 +122,8 @@ export default function App() {
             reports={reports} 
             config={config} 
             loading={loading} 
-            onResolve={handleResolveReport} 
+            onResolve={handleResolveReport}
+            onDelete={handleDeleteReport} 
           />
         </section>
       </main>

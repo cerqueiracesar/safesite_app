@@ -118,22 +118,23 @@ export function makeRoutes({ ai, modelId }) {
   });
 
   // <-- 4. ROTA PROTEGIDA COM `verifyToken`
-  // Apenas usuários logados podem alterar o status ou comentar
   router.patch("/reports/:id", verifyToken, (req, res) => {
     const { status, assignedTo, comment } = req.body;
     const reports = loadJSON(REPORTS_FILE, []);
     const report = reports.find((r) => r.id === req.params.id);
 
-    if (!report) {
-      return res.status(404).json({ error: "Report not found" });
-    }
+    if (!report) return res.status(404).json({ error: "Report not found" });
 
-    if (status) report.status = status;
+    if (status) {
+      report.status = status;
+      // Registra a hora exata em que foi resolvido (para o sumiço em 2 dias)
+      if (status === "resolved") report.resolvedAt = new Date().toISOString();
+    }
+    
     if (assignedTo) report.assignedTo = assignedTo;
     if (comment) {
       report.comments.push({
         timestamp: new Date().toISOString(),
-        // Agora podemos usar o nome que veio de dentro do token seguro!
         author: req.user.username, 
         text: comment
       });
@@ -141,6 +142,21 @@ export function makeRoutes({ ai, modelId }) {
 
     saveJSON(REPORTS_FILE, reports);
     res.json(report);
+  });
+
+  router.delete("/reports/:id", verifyToken, (req, res) => {
+    let reports = loadJSON(REPORTS_FILE, []);
+    const initialLength = reports.length;
+    
+    // Filtra removendo o ID que o usuário quer apagar
+    reports = reports.filter(r => r.id !== req.params.id);
+    
+    if (reports.length === initialLength) {
+      return res.status(404).json({ error: "Report not found" });
+    }
+
+    saveJSON(REPORTS_FILE, reports);
+    res.json({ message: "Relato excluído com sucesso" });
   });
 
   // Get users

@@ -72,3 +72,20 @@ export async function fetchUsers() {
   if (!res.ok) throw new Error("Failed to fetch users");
   return res.json();
 }
+
+export async function deleteReport(id) {
+  const token = localStorage.getItem("safesite_token"); 
+  const headers = {};
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
+  const res = await fetch(`${API_URL}/reports/${id}`, {
+    method: "DELETE",
+    headers
+  });
+  
+  if (!res.ok) {
+    if (res.status === 401 || res.status === 403) throw new Error("Não autorizado.");
+    throw new Error("Falha ao excluir o relato");
+  }
+  return res.json();
+}

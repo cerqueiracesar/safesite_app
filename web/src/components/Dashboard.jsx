@@ -1,9 +1,24 @@
 import { RiskCard } from "./RiskCard";
 
-export function Dashboard({ reports, config, loading, onResolve }) {
+export function Dashboard({ reports, config, loading, onResolve, onDelete }) {
   if (!config) {
     return <div className="loading">Carregando configurações...</div>;
   }
+
+  const now = new Date();
+  const DOIS_DIAS_EM_MS = 2 * 24 * 60 * 60 * 1000;
+
+  // 1. Remove os resolvidos há mais de 2 dias
+  const visibleReports = reports.filter(r => {
+    if (r.status !== "resolved") return true; // Mostra todos os abertos
+    
+    // Se está resolvido, calcula a diferença de dias
+    const resolvedDate = r.resolvedAt ? new Date(r.resolvedAt) : new Date(r.timestamp);
+    return (now - resolvedDate) < DOIS_DIAS_EM_MS;
+  });
+
+  // 2. Só conta os relatos que estão "open" (Abertos)
+  const openReports = visibleReports.filter(r => r.status === "open");
 
   // Agrupar por risco
   const grouped = {
@@ -57,8 +72,8 @@ export function Dashboard({ reports, config, loading, onResolve }) {
         </div>
       ) : (
         <div className="reports-container">
-          {reports.map((report) => (
-            <RiskCard key={report.id} report={report} config={config} onResolve={onResolve} />
+          {visibleReports.map((report) => (
+            <RiskCard key={report.id} report={report} config={config} onResolve={onResolve} onDelete={onDelete} />
           ))}
         </div>
       )}

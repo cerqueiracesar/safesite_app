@@ -1,7 +1,6 @@
-import { useState } from "react"; // <-- Corrigido o React solto
+import { useState } from "react"; 
 
-// <-- Adicionamos onResolve aqui nas props
-export function RiskCard({ report, config, onResolve }) { 
+export function RiskCard({ report, config, onResolve, onDelete }) { 
   const riskInfo = config?.riskLevels?.[report.aiAnalysis.riskLevel] || {
     color: "#666",
     icon: "⚫",
@@ -52,13 +51,25 @@ export function RiskCard({ report, config, onResolve }) {
       <div className="risk-footer">
         <small>Por: {report.reportedBy} | {new Date(report.timestamp).toLocaleTimeString("pt-BR")}</small>
         
-        {/* <-- Usando a função onResolve que veio do pai */}
-        <button
-          className={`status-btn ${report.status}`}
-          onClick={() => onResolve(report.id)} 
-        >
-          {report.status === "open" ? "✓ Resolver" : "Resolvido"}
-        </button>
+        <div style={{ display: "flex", gap: "10px" }}>
+          {/* BOTÃO DE EXCLUIR */}
+          <button 
+            onClick={() => onDelete(report.id)} 
+            style={{ background: "transparent", border: "none", cursor: "pointer", fontSize: "1.2rem" }}
+            title="Excluir permanentemente"
+          >
+            🗑️
+          </button>
+          
+          {/* BOTÃO DE RESOLVER */}
+          <button
+            className={`status-btn ${report.status}`}
+            onClick={() => onResolve(report.id)}
+            disabled={report.status === "resolved"} 
+          >
+            {report.status === "open" ? "✓ Resolver" : "Resolvido"}
+          </button>
+        </div>
       </div>
     </div>
   );
