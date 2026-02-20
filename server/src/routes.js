@@ -2,11 +2,15 @@ import fs from "fs";
 import path from "path";
 import express from "express";
 import { fileURLToPath } from "url";
+import jwt from "jsonwebtoken"; // <-- 1. Importando JWT
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPORTS_FILE = path.join(__dirname, "data", "reports.json");
 const USERS_FILE = path.join(__dirname, "data", "users.json");
 const CONFIG_FILE = path.join(__dirname, "data", "siteConfig.json");
+
+// Chave secreta para assinar o token (Em produção, vem do .env)
+const JWT_SECRET = process.env.JWT_SECRET || "safesite_super_secret_key_2026";
 
 function loadJSON(filePath, defaultValue = []) {
   try {
@@ -26,25 +30,61 @@ function saveJSON(filePath, data) {
 export function makeRoutes({ ai, modelId }) {
   const router = express.Router();
 
+  // <-- 2. MIDDLEWARE DE AUTENTICAÇÃO (O "Segurança da Porta")
+  const verifyToken = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    
+    if (!authHeader) {
+      return res.status(401).json({ error: "Acesso negado. Token não fornecido." });
+    }
+
+    // O header vem no formato: "Bearer TOKEN_AQUI"
+    const token = authHeader.split(" ")[1];
+
+    try {
+      const decoded = jwt.verify(token, JWT_SECRET);
+      req.user = decoded; // Guarda os dados do usuário para usar na rota
+      next(); // Permite que a requisição continue
+    } catch (error) {
+      return res.status(403).json({ error: "Token inválido ou expirado." });
+    }
+  };
+
   // Health check
   router.get("/health", (req, res) => {
     res.json({ status: "ok", model: modelId });
   });
 
-  // Get all reports
+  // <-- 3. ROTA DE LOGIN (Gera o Token)
+  router.post("/login", (req, res) => {
+    const { username } = req.body;
+
+    if (!username) {
+      return res.status(400).json({ error: "Usuário é obrigatório" });
+    }
+
+    // Gera um token válido por 8 horas
+    const token = jwt.sign({ username, role: "engineer" }, JWT_SECRET, {
+      expiresIn: "8h"
+    });
+
+    res.json({ message: "Login realizado", token, username });
+  });
+
+  // Get all reports (Rota Pública)
   router.get("/reports", (req, res) => {
     const reports = loadJSON(REPORTS_FILE, []);
     res.json(reports);
   });
 
-  // Get reports by site
+  // Get reports by site (Rota Pública)
   router.get("/reports/:siteId", (req, res) => {
     const reports = loadJSON(REPORTS_FILE, []);
     const filtered = reports.filter((r) => r.siteId === req.params.siteId);
     res.json(filtered);
   });
 
-  // Analyze and create report
+  // Analyze and create report (Pode ser pública para qualquer operário relatar)
   router.post("/analyze", async (req, res) => {
     const { description, siteId = "obra-001", reportedBy = "anonymous" } = req.body;
 
@@ -77,8 +117,9 @@ export function makeRoutes({ ai, modelId }) {
     }
   });
 
-  // Update report status
-  router.patch("/reports/:id", (req, res) => {
+  // <-- 4. ROTA PROTEGIDA COM `verifyToken`
+  // Apenas usuários logados podem alterar o status ou comentar
+  router.patch("/reports/:id", verifyToken, (req, res) => {
     const { status, assignedTo, comment } = req.body;
     const reports = loadJSON(REPORTS_FILE, []);
     const report = reports.find((r) => r.id === req.params.id);
@@ -92,6 +133,8 @@ export function makeRoutes({ ai, modelId }) {
     if (comment) {
       report.comments.push({
         timestamp: new Date().toISOString(),
+        // Agora podemos usar o nome que veio de dentro do token seguro!
+        author: req.user.username, 
         text: comment
       });
     }

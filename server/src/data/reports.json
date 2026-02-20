@@ -1,5 +1,59 @@
 [
   {
+    "id": "1771613584169",
+    "siteId": "obra-001",
+    "reportedBy": "Carlos Supervisor",
+    "timestamp": "2026-02-20T18:53:04.169Z",
+    "description": "Limpeza inacabada, setor 2, wc.",
+    "aiAnalysis": {
+      "riskLevel": "low",
+      "category": "outro",
+      "summary": "Limpeza incompleta no setor 2 (banheiros).",
+      "recommendedActions": [
+        "Finalizar a limpeza do setor 2 imediatamente",
+        "Verificar o cronograma de limpeza dos WCs",
+        "Garantir que os padrões de higiene sejam mantidos"
+      ],
+      "estimatedTimeToResolve": 15
+    },
+    "status": "resolved",
+    "assignedTo": null,
+    "comments": [
+      {
+        "timestamp": "2026-02-20T20:01:21.974Z",
+        "author": "Carlos Supervisor",
+        "text": "Situação verificada e resolvida de forma segura."
+      }
+    ]
+  },
+  {
+    "id": "1771613427528",
+    "siteId": "obra-001",
+    "reportedBy": "João Silva",
+    "timestamp": "2026-02-20T18:50:27.528Z",
+    "description": "Concretagem aguardando apenas chegada de vibrador no canteiro.",
+    "aiAnalysis": {
+      "riskLevel": "high",
+      "category": "equipamento",
+      "summary": "Concretagem parada por falta de vibrador, comprometendo a integridade estrutural.",
+      "recommendedActions": [
+        "Contatar imediatamente o responsável pela logística para agilizar a entrega do vibrador.",
+        "Avaliar o estado e o tempo de trabalhabilidade do concreto já lançado para evitar falha na vibração.",
+        "Considerar a paralisação da concretagem ou descarte do material se o vibrador não chegar a tempo de ser adequadamente vibrado."
+      ],
+      "estimatedTimeToResolve": 15
+    },
+    "status": "resolved",
+    "assignedTo": null,
+    "comments": [
+      {
+        "timestamp": "2026-02-20T20:01:08.344Z",
+        "author": "João Silva",
+        "text": "Situação verificada e resolvida de forma segura."
+      }
+    ]
+  },
+  {
     "id": "1771457880519",
     "siteId": "obra-001",
     "reportedBy": "Maria Mestre",
@@ -77,9 +131,15 @@
       ],
       "estimatedTimeToResolve": 0
     },
-    "status": "open",
+    "status": "resolved",
     "assignedTo": null,
-    "comments": []
+    "comments": [
+      {
+        "timestamp": "2026-02-20T20:04:17.001Z",
+        "author": "Carlos Supervisor",
+        "text": "Situação verificada e resolvida de forma segura."
+      }
+    ]
   },
   {
     "id": "1771435885786",
