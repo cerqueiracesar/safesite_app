@@ -56,30 +56,41 @@ safesite-app/
 │   │   ├── dashboard.py            # Streamlit BI Dashboard
 │   │   └── requirements.txt        # Python Dependencies
 │   ├── logs/                       # Pipeline execution logs
-
----
+│   ├── data_lake/                  # Trusted analytical storage (Data Lake)
+│   │   └── trusted/
+│   │       └── safety_reports.parquet
+│   └── src/data/
+│       └── reports.json            # Raw source data
+├── web/                             # Frontend Dashboard (React)
+└── prompts/                         # System Prompts for AI Analysis
 
 ⚡ How to Run the Data Pipeline
-Prepare Environment:
-
+1. Prepare Environment
 Bash
 
 cd server
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
-Install Dependencies:
-
+2. Install Dependencies
 Bash
 
 pip install -r scripts/requirements.txt
-Run ETL Pipeline:
-
+3. Run ETL Pipeline
 Bash
 
 python scripts/data_pipeline.py
-Launch BI Dashboard:
-
+4. Launch BI Dashboard
 Bash
 
 streamlit run scripts/dashboard.py
+
+## 📊 Analytical Dashboard
+
+Below is the analytical dashboard developed with **Streamlit**, consuming processed data from the *Trusted* layer (Parquet):
+
+![SafeSite Analytical Dashboard]
+<div align="center">
+  <img src="./assets/Screenshot 2026-02-23 100129.png" alt="SafeSite Dashboard" width="100%">
+</div>
+
 SafeSite v2.0 | Transitioning from Infrastructure Engineering to Data Engineering.
