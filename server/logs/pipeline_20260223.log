@@ -1,0 +1,3 @@
+2026-02-23 10:05:46,166 - INFO - \U0001f680 Iniciando execução do pipeline de dados.
+2026-02-23 10:05:46,176 - INFO - Dados carregados: 12 registros encontrados.
+2026-02-23 10:05:46,211 - INFO - \u2705 Pipeline finalizado com sucesso. Arquivo Parquet gerado em data_lake/trusted/safety_reports.parquet
