@@ -57,8 +57,7 @@ safesite-app/
 │   │   └── requirements.txt        # Python Dependencies
 │   ├── logs/                       # Pipeline execution logs
 
-<img width="1917" height="906" alt="Screenshot 2026-02-23 100129" src="https://github.com/user-attachments/assets/a4ff83e4-0f17-46a2-a288-9039bab8cd65" />
-
+---
 
 ⚡ How to Run the Data Pipeline
 Prepare Environment:
