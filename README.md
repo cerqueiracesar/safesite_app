@@ -63,6 +63,7 @@ safesite-app/
 │       └── reports.json            # Raw source data
 ├── web/                             # Frontend Dashboard (React)
 └── prompts/                         # System Prompts for AI Analysis
+```
 
 ⚡ How to Run the Data Pipeline
 1. Prepare Environment
@@ -90,7 +91,7 @@ Below is the analytical dashboard developed with **Streamlit**, consuming proces
 
 ![SafeSite Analytical Dashboard]
 <div align="center">
-  <img src="./assets/Screenshot 2026-02-23 100129.png" alt="SafeSite Dashboard" width="100%">
+  <img src="./assets/dashboard.png" alt="SafeSite Dashboard" width="100%">
 </div>
 
 SafeSite v2.0 | Transitioning from Infrastructure Engineering to Data Engineering.
